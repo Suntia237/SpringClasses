@@ -9,6 +9,13 @@ public class UserServiceImpl implements UserService{
         this.userMapper = userMapper;
     }
 
+    public UserServiceImpl() {
+    }
+
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
     @Override
     public void findAllUsers() {
         userMapper.findAllUsers();
@@ -18,5 +25,5 @@ public class UserServiceImpl implements UserService{
     public void findUserById(int id) {
         userMapper.findUserById(id);
     }
-//Hello
+
 }

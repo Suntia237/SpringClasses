@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="userMapper" class="cn.edu.xync.mapper.UserMapperImpl"></bean>
+    <!--User Mapper-->
+    <bean id="userMapper" class="cn.edu.xync.mapper.UserMapperImpl"/>
+    <bean id="userMapper2" class="cn.edu.xync.factory.UserMapperFactory" factory-method="getUserMapper"/>
+
     <bean id="userService" class="cn.edu.xync.service.UserServiceImpl">
         <property name="userMapper" ref="userMapper"/>
     </bean>
+    <bean id="userService2" class="cn.edu.xync.factory.UserMapperFactoryBean">
+        <!--        <property name="userMapper" ref="userMapper"/>-->
+    </bean>
+
+    <!--User Mapper with Factory instance-->
+    <bean id="factory" class="cn.edu.xync.factory.UserMapperInstanceFactory"/>
+    <bean id="userMapper3" factory-bean="factory" factory-method="getUserMapper"/>
+
+    <bean id="userMapper4" class="cn.edu.xync.factory.UserMapperFactoryBean"/>
+
 </beans>
