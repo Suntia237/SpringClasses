@@ -10,4 +10,12 @@ public class UserMapperImpl implements UserMapper{
     public void findUserById(int id) {
         System.out.println("findUserByid "+id);
     }
+
+    public void init() {
+        System.out.println("UserMapper init---------------");
+    }
+
+    public void destroy() {
+        System.out.println("UserMapper shut down---------------");
+    }
 }
